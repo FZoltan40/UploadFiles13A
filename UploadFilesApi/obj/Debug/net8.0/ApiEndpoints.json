@@ -1,8 +1,24 @@
 [
   {
     "ContainingType": "UploadFilesApi.Controllers.UploadFileController",
+    "Method": "GetFile",
+    "RelativePath": "api/UploadFile/download",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UploadFilesApi.Controllers.UploadFileController",
     "Method": "PostFiles",
-    "RelativePath": "api/UploadFile",
+    "RelativePath": "api/UploadFile/upload",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

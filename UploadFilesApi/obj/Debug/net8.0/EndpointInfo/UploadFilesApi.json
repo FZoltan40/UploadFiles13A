@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/UploadFile": {
+    "/api/UploadFile/upload": {
       "post": {
         "tags": [
           "UploadFile"
@@ -30,6 +30,28 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UploadFile/download": {
+      "get": {
+        "tags": [
+          "UploadFile"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

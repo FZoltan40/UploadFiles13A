@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UploadFilesApi.Models;
 using UploadFilesApi.Services.InteFaces;
 
 namespace UploadFilesApi.Controllers
@@ -15,7 +16,7 @@ namespace UploadFilesApi.Controllers
             this.uploadFile = uploadFile;
         }
 
-        [HttpPost]
+        [HttpPost("upload")]
         public async Task<ActionResult> PostFiles(IFormFile formFile)
         {
             var up = await uploadFile.UpLoad(formFile);
@@ -26,6 +27,19 @@ namespace UploadFilesApi.Controllers
             }
 
             return BadRequest(up);
+        }
+
+        [HttpGet("download")]
+        public async Task<ActionResult> GetFile(int id)
+        {
+            var file = await uploadFile.DownLoad(id) as FileUpload;
+
+            if (file != null)
+            {
+                return File(file.FileData,file.ContentType,file.FilName);
+            }
+
+            return BadRequest(file);
         }
     }
 }

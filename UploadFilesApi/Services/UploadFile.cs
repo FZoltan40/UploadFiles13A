@@ -12,9 +12,23 @@ namespace UploadFilesApi.Services
             _storeContext = storeContext;
         }
 
-        public Task<object> DownLoad(int id)
+        public async Task<object> DownLoad(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var file = await _storeContext.Files.FindAsync(id);
+
+                if (file != null) 
+                { 
+                    return file;
+                }
+
+                return new { message = "Sikertelen lekérés." };
+            }
+            catch (Exception ex)
+            {
+                return new { message = ex.Message };
+            }
         }
 
         public async Task<object> UpLoad(IFormFile formFile)
@@ -30,7 +44,7 @@ namespace UploadFilesApi.Services
                         var file = new FileUpload
                         {
                             FileData = memoryStream.ToArray(),
-                            FilName = formFile.Name,
+                            FilName = formFile.FileName,
                             ContentType = formFile.ContentType
                         };
 
