@@ -1,4 +1,8 @@
 
+using UploadFilesApi.Models;
+using UploadFilesApi.Services;
+using UploadFilesApi.Services.InteFaces;
+
 namespace UploadFilesApi
 {
     public class Program
@@ -6,6 +10,9 @@ namespace UploadFilesApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<FilestoreContext>();
+            builder.Services.AddScoped<IUploadFile, UploadFile>();
 
             // Add services to the container.
 

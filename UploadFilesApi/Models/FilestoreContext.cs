@@ -23,7 +23,7 @@ public partial class FilestoreContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<File>(entity =>
+        modelBuilder.Entity<FileUpload>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
