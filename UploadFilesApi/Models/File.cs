@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace UploadFilesApi.Models;
 
-public partial class File
+public partial class FileUpload
 {
     public int Id { get; set; }
 
